@@ -31,11 +31,40 @@ class ViewController: UIViewController {
     var operandStack = Array<Double>()
 
     @IBAction func enter() {
-        userIsTyping = true
         operandStack.append(displayValue)
+        userIsTyping = false
         print("operand Stack = \(operandStack)")
     }
 
+    @IBAction func operate(sender: UIButton) {
+        let operation = sender.currentTitle!
+        if userIsTyping {
+            enter()
+        }
+        switch operation {
+        case "x": perfornOperation {$0 * $1 }
+        case "/": perfornOperation {$1 / $0 }
+        case "+": perfornOperation {$0 + $1 }
+        case "-": perfornOperation {$1 - $0 }
+        case "": perfornSingleOperation {sqrt($0)}
+        default: break
+        }
+    }
+    func perfornOperation(option: (Double, Double) -> Double) {
+        if operandStack.count >= 2{
+            displayValue = operandStack.removeLast(); operandStack.removeLast()
+            enter()
+        }
+    }
+  
+    
+    func perfornSingleOperation(option: ( Double) -> Double) {
+        if operandStack.count >= 2{
+            displayValue = operandStack.removeLast();
+            enter()
+        }
+    }
+    
     var displayValue: Double {
         get {
             return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
