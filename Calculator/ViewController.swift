@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     func perfornOperation(option: (Double, Double) -> Double) {
         if operandStack.count >= 2{
             displayValue = operandStack.removeLast(); operandStack.removeLast()
-            enter()
+            	enter()
         }
     }
   
