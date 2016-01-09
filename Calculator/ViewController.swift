@@ -10,16 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var brain = CalculatorBrain()
     var userIsTyping = false
     
     @IBOutlet weak var display: UILabel!
 
+    @IBOutlet weak var history: UILabel!
     
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         print("digit = \(digit)" )
+        history.text = history.text! + digit
+        print("command history =" + history.text!)
+        
         if userIsTyping {
-            display.text = display.text! + digit
+            if digit == "." {
+                if display.text!.containsString(".") {
+                }
+                else {
+                    display.text = display.text! + digit
+                }
+            }
+            else {
+               display.text = display.text! + digit
+            }
+
         } else {
             display.text = digit
             userIsTyping = true
@@ -28,42 +43,64 @@ class ViewController: UIViewController {
         
     }
     
-    var operandStack = Array<Double>()
+    @IBAction func spcialCharacter(sender: UIButton) {
+        if sender.currentTitle! == "π" {
+            if userIsTyping {
+                enter()
+                displayValue = M_PI
+                enter()
+                userIsTyping = false
+                
+            }
+            else {
+                displayValue = M_PI
+                enter()
+            }
+        }
 
-    @IBAction func enter() {
-        operandStack.append(displayValue)
-        userIsTyping = false
-        print("operand Stack = \(operandStack)")
+    }
+        
+    
+    @IBAction func clearAll(sender: UIButton) {
+        if sender.currentTitle! == "clr" {
+            brain.clear()
+            display.text = "0"
+            userIsTyping = false
+            history.text = ""
+        }
     }
 
+    @IBAction func enter() {
+        userIsTyping = false
+        if let result = brain.pushOperand(displayValue) {
+            displayValue = result
+            history.text = history.text! + " "
+        }
+        else {
+            displayValue = 0
+        }
+
+    }
+    
     @IBAction func operate(sender: UIButton) {
-        let operation = sender.currentTitle!
         if userIsTyping {
             enter()
         }
-        switch operation {
-        case "x": perfornOperation {$0 * $1 }
-        case "/": perfornOperation {$1 / $0 }
-        case "+": perfornOperation {$0 + $1 }
-        case "-": perfornOperation {$1 - $0 }
-        case "": perfornSingleOperation {sqrt($0)}
-        default: break
+        if let operation = sender.currentTitle {
+            if let result = brain.performOperation(operation) {
+                displayValue = result
+                history.text = history.text! + operation + " "
+            }
+            else {
+                displayValue = 0
+            }
+            
         }
+
+
     }
-    func perfornOperation(option: (Double, Double) -> Double) {
-        if operandStack.count >= 2{
-            displayValue = operandStack.removeLast(); operandStack.removeLast()
-            	enter()
-        }
-    }
-  
     
-    func perfornSingleOperation(option: ( Double) -> Double) {
-        if operandStack.count >= 2{
-            displayValue = operandStack.removeLast();
-            enter()
-        }
-    }
+
     
     var displayValue: Double {
         get {
