@@ -191,11 +191,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="x"/>
                                 <connections>
+<<<<<<< HEAD:Calculator/Base.lproj/	.storyboard
 <<<<<<< HEAD
                                     <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9w-eU-RpR"/>
 =======
                                     <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6K-7L-f14"/>
 >>>>>>> parent of 758c3d1... updated to complete assignment 1
+=======
+                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6K-7L-f14"/>
+>>>>>>> parent of 758c3d1... updated to complete assignment 1:Calculator/Base.lproj/Main.storyboard
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9o3-7i-9HL">

@@ -99,7 +99,11 @@
 			children = (
 				A86DE62B1C4047FE0050541A /* AppDelegate.swift */,
 				A86DE62D1C4047FE0050541A /* ViewController.swift */,
+<<<<<<< HEAD
 				A86DE62F1C4047FE0050541A /* 	.storyboard */,
+=======
+				A86DE62F1C4047FE0050541A /* Main.storyboard */,
+>>>>>>> parent of 758c3d1... updated to complete assignment 1
 				A86DE6321C4047FE0050541A /* Assets.xcassets */,
 				A86DE6341C4047FE0050541A /* LaunchScreen.storyboard */,
 				A86DE6371C4047FE0050541A /* Info.plist */,
@@ -484,7 +488,6 @@
 				A86DE6521C4047FE0050541A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		A86DE6531C4047FE0050541A /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -493,7 +496,6 @@
 				A86DE6551C4047FE0050541A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		A86DE6561C4047FE0050541A /* Build configuration list for PBXNativeTarget "CalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,7 +504,6 @@
 				A86DE6581C4047FE0050541A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
